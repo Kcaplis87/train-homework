@@ -7,121 +7,94 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous">
 
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase-database.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous">
+
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
 </head>
 
 <body>
     <div class="container">
-        <div class="jumbotron">
-            <h1 class="display-4">Train Schedule</h1>
-            <p class="lead">Text</p>
+        <div class="jumbotron" id="top">
+            <h1>Train Schedule <img src="http://www.clker.com/cliparts/w/b/N/2/g/Z/hs-train-white-md.png"></h1>
 
-        </div>
+
+
+        </div> 
 
         <br>
         <div class="container">
-            <div class="card">
-                <div class="card-header">
-                    Current Train Schedule
+            <div class="panel panel-primary" id="panel1">
+                <p class="panel-title">Current Train</p>
+
+                <div class="panel-body">
+                    <table class="table" id='trainTable'>
+                        <thead>
+                            <tr>
+                                <th scope="col">Train Name</th>
+                                <th scope="col">Destination</th>
+                                <th scope="col">Frequency (min)</th>
+                                <th scope="col">Next Arrival</th>
+                                <th scope="col">Minutes Away</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
                 </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Train Name</th>
-                            <th scope="col">Destination</th>
-                            <th scope="col">Frequency (min)</th>
-                            <th scope="col">Next Arrival</th>
-                            <th scope="col">Minutes Away</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Trenton Express</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Oregon Trail</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Midnight Carriage</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Sing Sing Caravan</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Boston Bus</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">California Caravan</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Analben's Train</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
-    </div>
-    <br>
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-                Add Train
-            </div>
-            <div class="container">
-                <form>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Train Name</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <br>
 
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Destination</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">First Train Time (HH:mm military time)</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Frequency (min)</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
-                    </div>
+        <div class="container">
+            <div class="panel panel-primary" id="panel2">
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                <p class="panel-title">Add a New Train</p>
+
+
+                <div class="panel-body">
+
+                    <form>
+                        <div class="form-group">
+                            <label for="inputTrainName">Train Name</label>
+                            <input type="text" class="form-control" id="inputTrainName" autocomplete="off">
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="inputDestination">Destination</label>
+                            <input type="text" class="form-control" id="inputDestination" autocomplete="off">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputTrainTime">First Train Time (HH:mm - military time)</label>
+                            <input type="text" class="form-control" id="inputTrainTime" autocomplete="off">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputFrequency">Frequency (min)</label>
+                            <input type="text" class="form-control" id="inputFrequency" autocomplete="off">
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary" id="addTrainBtn">Submit</button>
+                    </form>
+                </div>
             </div>
+
         </div>
     </div>
+
 
 
 
